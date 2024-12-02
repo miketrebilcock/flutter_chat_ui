@@ -60,14 +60,16 @@ String getVerboseDateTimeRepresentation(
   String? dateLocale,
   DateFormat? timeFormat,
 }) {
+  final now = DateTime.now();
   final formattedDate = dateFormat != null
       ? dateFormat.format(dateTime)
+      : dateTime.year !== now.year 
+      ? DateFormat.yMMMd(dateLocale).format(dateTime)
       : DateFormat.MMMd(dateLocale).format(dateTime);
   final formattedTime = timeFormat != null
       ? timeFormat.format(dateTime)
       : DateFormat.Hm(dateLocale).format(dateTime);
   final localDateTime = dateTime.toLocal();
-  final now = DateTime.now();
 
   if (localDateTime.day == now.day &&
       localDateTime.month == now.month &&
