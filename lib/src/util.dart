@@ -63,7 +63,7 @@ String getVerboseDateTimeRepresentation(
   final now = DateTime.now();
   final formattedDate = dateFormat != null
       ? dateFormat.format(dateTime)
-      : dateTime.year !== now.year 
+      : dateTime.year != now.year 
       ? DateFormat.yMMMd(dateLocale).format(dateTime)
       : DateFormat.MMMd(dateLocale).format(dateTime);
   final formattedTime = timeFormat != null
